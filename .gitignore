@@ -1,6 +1,71 @@
+# ============================================================
+# ENVIRONMENT & SECRETS
+# ============================================================
 .env
+.env.local
 .venv/
+.venv
+
+# ============================================================
+# PYTHON CACHE
+# ============================================================
 __pycache__/
+*.py[cod]
+*.pyc
 .pytest_cache/
-.freebuff/
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# ============================================================
+# MODEL ARTIFACTS — too large for GitHub; see docs/reproducibility.md
+# ============================================================
+# LoRA adapter weights
+*.safetensors
+*.pt
+*.pth
+*.bin
+
+# Tokenizer artifacts (re-downloadable from HuggingFace)
+tokenizer.json
+tokenizer_config.json
+chat_template.jinja
+training_args.bin
+
+# Training checkpoints
+checkpoint-*/
+optimizer.pt
+rng_state.pth
+scaler.pt
+scheduler.pt
+trainer_state.json
+
+# Local adapter directories
+agentlab_qwen_lora/
+agentlab_qwen_lora_7b_v2/
+
+# ============================================================
+# COLAB / WORKSPACE ARTIFACTS
+# ============================================================
 phase3files/
+.freebuff/
+
+# ============================================================
+# RESULTS — TRACKED (must not be ignored)
+# ============================================================
+# Negate patterns above for the results/ directory
+# so that result JSON/MD files are committed.
+!/results/
+results/*
+!/results/eval_results_*.json
+!/results/eval_report*.md
+!/results/eval_comparison*.md
+!/results/experiment_summary.json
+
+# ============================================================
+# MISC
+# ============================================================
+memory_store.json
+.DS_Store
+Thumbs.db

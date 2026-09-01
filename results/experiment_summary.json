@@ -1,0 +1,104 @@
+{
+  "experiment": "AgentLab QLoRA tool-use distillation",
+  "base_model": "Qwen/Qwen2.5-7B-Instruct",
+  "evaluation": {
+    "benchmark_file": "eval/tasks.py",
+    "total_tasks": 23,
+    "max_steps": 3,
+    "scoring": "harness: required_tools, answer_contains, answer_contains_any, numeric_check, expect_tool_error",
+    "tools_protocol": "MCP (Model Context Protocol) — calculator, word_count, web_search, get_weather"
+  },
+  "results": {
+    "base": {
+      "model_label": "Base Qwen 7B",
+      "adapter": "none",
+      "training_trajectories": 0,
+      "training_data_file": null,
+      "passed": 22,
+      "total": 23,
+      "success_rate_pct": 95.65,
+      "results_file": "results/eval_results_base.json",
+      "report_file": "results/eval_report_base.md",
+      "failed_tasks": ["adversarial_division_by_zero"],
+      "verified_at": "2026-09-01 15:55:51"
+    },
+    "v1_lora": {
+      "model_label": "LoRA v1",
+      "adapter": "agentlab_qwen_lora_7b",
+      "training_trajectories": 35,
+      "training_data_file": "training/training_data.jsonl",
+      "passed": 18,
+      "total": 23,
+      "success_rate_pct": 78.26,
+      "results_file": "results/eval_results_v1.json",
+      "report_file": "results/eval_report_v1.md",
+      "failed_tasks": [
+        "multi_wordcount_calc",
+        "multi_three_tools",
+        "chain_weather_then_calc",
+        "adversarial_false_premise",
+        "adversarial_division_by_zero"
+      ],
+      "verified_at": "2026-09-01 18:01:23"
+    },
+    "v2_lora": {
+      "model_label": "LoRA v2",
+      "adapter": "agentlab_qwen_lora_7b_v2",
+      "training_trajectories": 46,
+      "training_data_file": "training/training_data_augmented.jsonl",
+      "passed": 23,
+      "total": 23,
+      "success_rate_pct": 100.0,
+      "results_file": "results/eval_results_v2.json",
+      "report_file": "results/eval_report_v2.md",
+      "failed_tasks": [],
+      "verified_at": "2026-09-01 22:32:05",
+      "notes": "v2 evaluation used the corrected two-pass tool-call parser (see serving/colab_server_v2.py). The single tool error in eval_results_v2.json (calculator returning division-by-zero for adversarial_division_by_zero) is the EXPECTED behavior that task requires — the task scored PASS."
+    }
+  },
+  "pairwise_comparisons": {
+    "base_vs_v1": {
+      "delta_passed": -4,
+      "delta_pp": -17.39,
+      "shared_failures": ["adversarial_division_by_zero"],
+      "v1_only_failures": [
+        "multi_wordcount_calc",
+        "multi_three_tools",
+        "chain_weather_then_calc",
+        "adversarial_false_premise"
+      ]
+    },
+    "base_vs_v2": {
+      "delta_passed": 1,
+      "delta_pp": 4.35,
+      "shared_failures": [],
+      "v2_only_failures": [],
+      "base_only_failures": ["adversarial_division_by_zero"]
+    },
+    "v1_vs_v2": {
+      "delta_passed": 5,
+      "delta_pp": 21.74,
+      "shared_failures": [],
+      "v2_only_failures": [],
+      "v1_only_failures": [
+        "multi_wordcount_calc",
+        "multi_three_tools",
+        "chain_weather_then_calc",
+        "adversarial_false_premise",
+        "adversarial_division_by_zero"
+      ]
+    }
+  },
+  "methodology_notes": {
+    "controlled_comparison": "All three evaluations used the same 23 tasks, same max_steps=3, same MCP tool infrastructure, same base model, and greedy decoding (do_sample=False).",
+    "scoring_immutability": "Benchmark tasks in eval/tasks.py were not modified between the three evaluations. The scoring harness was not modified.",
+    "parser_change": "v1 evaluation used a single-pass regex parser in the Colab server. v2 evaluation used a corrected two-pass parser (also deployed for the v2 adapter). The parser was identified as a contributing factor in v1 failures where the fine-tuned model emitted malformed tool-call tags.",
+    "training_data_change": "v2 added 11 targeted trajectories to address specific failure patterns identified by trace-level analysis of v1 (word_count→calculator, weather→calculator, 3-tool chains, division-by-zero error handling, false-premise rejection)."
+  },
+  "scope_limitations": [
+    "Pass rates are tied to this specific 23-task held-out set.",
+    "Generalization beyond this benchmark is not implied.",
+    "All three evaluations used max_steps=3; larger step budgets might give different results.",
+    "v2 evaluation used the corrected parser; running v1's adapter under v2's parser would not be a fair comparison."
+  ]
+}

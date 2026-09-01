@@ -1,0 +1,541 @@
+{
+  "model": "Qwen2.5-7B-Instruct + LoRA (Fine-Tuned)",
+  "base_model": "Qwen2.5-7B-Instruct",
+  "adapter": "agentlab_qwen_lora",
+  "timestamp": "2026-09-01 18:01:23",
+  "total_tasks": 23,
+  "passed": 18,
+  "results": [
+    {
+      "task_id": "calc_basic_1",
+      "category": "math",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "calculator",
+          "arguments": {
+            "expression": "128 * 47"
+          },
+          "is_error": false,
+          "result_preview": "6016"
+        }
+      ],
+      "final_answer": "128 * 47 = 6016.",
+      "latency_seconds": 5.53099999999904,
+      "compute_latency_seconds": 5.53099999999904,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "calc_basic_2",
+      "category": "math",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "calculator",
+          "arguments": {
+            "expression": "900 / 12"
+          },
+          "is_error": false,
+          "result_preview": "75.0"
+        }
+      ],
+      "final_answer": "900 divided by 12 is 75.",
+      "latency_seconds": 5.54700000000048,
+      "compute_latency_seconds": 5.54700000000048,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "calc_order_of_ops",
+      "category": "math",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "calculator",
+          "arguments": {
+            "expression": "(15 + 5) * 3 - 10"
+          },
+          "is_error": false,
+          "result_preview": "50"
+        }
+      ],
+      "final_answer": "(15 + 5) * 3 - 10 = 50.",
+      "latency_seconds": 7.093000000000757,
+      "compute_latency_seconds": 7.093000000000757,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "wordcount_basic",
+      "category": "text",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "word_count",
+          "arguments": {
+            "text": "the quick brown fox jumps over the lazy dog"
+          },
+          "is_error": false,
+          "result_preview": "9"
+        }
+      ],
+      "final_answer": "There are 9 words in that sentence.",
+      "latency_seconds": 5.438000000000102,
+      "compute_latency_seconds": 5.438000000000102,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "weather_basic_1",
+      "category": "weather",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "get_weather",
+          "arguments": {
+            "city": "Tokyo"
+          },
+          "is_error": false,
+          "result_preview": "{\"city\": \"Tokyo\", \"temperature_c\": 25.1, \"condition\": \"mainly clear\", \"source\": \"open-meteo\"}"
+        }
+      ],
+      "final_answer": "The current weather in Tokyo is mainly clear at 25.1°C.",
+      "latency_seconds": 8.125,
+      "compute_latency_seconds": 8.125,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "weather_basic_2",
+      "category": "weather",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "get_weather",
+          "arguments": {
+            "city": "London"
+          },
+          "is_error": false,
+          "result_preview": "{\"city\": \"London\", \"temperature_c\": 20.7, \"condition\": \"overcast\", \"source\": \"open-meteo\"}"
+        }
+      ],
+      "final_answer": "It is overcast in London with a temperature of 20.7°C and no rain detected at this time.",
+      "latency_seconds": 9.32799999999952,
+      "compute_latency_seconds": 9.32799999999952,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "search_basic_1",
+      "category": "search",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "web_search",
+          "arguments": {
+            "query": "current CEO of OpenAI"
+          },
+          "is_error": false,
+          "result_preview": "{\"query\": \"current CEO of OpenAI\", \"results\": [{\"title\": \"Sam Altman\", \"url\": \"https://en.wikipedia.org/wiki/Sam_Altman\", \"snippet\": \"Samuel Harris Altman (born April 22, 1985) is an American entrepre"
+        }
+      ],
+      "final_answer": "The current CEO of OpenAI is Sam Altman.",
+      "latency_seconds": 9.639999999999418,
+      "compute_latency_seconds": 9.639999999999418,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "search_basic_2",
+      "category": "search",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "web_search",
+          "arguments": {
+            "query": "capital of Australia"
+          },
+          "is_error": false,
+          "result_preview": "{\"query\": \"capital of Australia\", \"results\": [{\"title\": \"Canberra\", \"url\": \"https://en.wikipedia.org/wiki/Canberra\", \"snippet\": \"Canberra (/\\u02c8k\\u00e6nbr\\u0259/ \\u24d8 KAN-br\\u0259; Ngunawal: Kanba"
+        }
+      ],
+      "final_answer": "The capital of Australia is Canberra. You can find more information about it on Wikipedia or other sources.",
+      "latency_seconds": 9.64100000000144,
+      "compute_latency_seconds": 9.64100000000144,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "multi_weather_calc",
+      "category": "multi_tool",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 3,
+      "tool_calls": [
+        {
+          "tool_name": "get_weather",
+          "arguments": {
+            "city": "Delhi"
+          },
+          "is_error": false,
+          "result_preview": "{\"city\": \"Delhi\", \"temperature_c\": 28.3, \"condition\": \"mainly clear\", \"source\": \"open-meteo\"}"
+        },
+        {
+          "tool_name": "calculator",
+          "arguments": {
+            "expression": "45 * 12"
+          },
+          "is_error": false,
+          "result_preview": "540"
+        }
+      ],
+      "final_answer": "The weather in Delhi is mainly clear at 28.3°C. Separately, 45 times 12 is 540.",
+      "latency_seconds": 16.14099999999962,
+      "compute_latency_seconds": 16.14099999999962,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "multi_wordcount_calc",
+      "category": "multi_tool",
+      "success": false,
+      "failure_reasons": [
+        "missing_required_tools:['calculator']"
+      ],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "word_count",
+          "arguments": {
+            "text": "artificial intelligence is transforming the world today"
+          },
+          "is_error": false,
+          "result_preview": "7"
+        }
+      ],
+      "final_answer": "The phrase contains 7 words. Multiplying this by 100 gives us 700.",
+      "latency_seconds": 9.640999999999622,
+      "compute_latency_seconds": 9.640999999999622,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "multi_search_weather",
+      "category": "multi_tool",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "web_search",
+          "arguments": {
+            "query": "current Prime Minister of UK"
+          },
+          "is_error": false,
+          "result_preview": "{\"query\": \"current Prime Minister of UK\", \"results\": [{\"title\": \"Keir Starmer\", \"url\": \"https://en.wikipedia.org/wiki/Keir_Starmer\", \"snippet\": \"Sir Keir Rodney Starmer( (born 2 September 1962) is a B"
+        },
+        {
+          "tool_name": "get_weather",
+          "arguments": {
+            "city": "Mumbai"
+          },
+          "is_error": false,
+          "result_preview": "{\"city\": \"Mumbai\", \"temperature_c\": 27.7, \"condition\": \"mainly clear\", \"source\": \"open-meteo\"}"
+        }
+      ],
+      "final_answer": "The current Prime Minister of the UK is Andy Burnham. The weather in Mumbai is mainly clear at 27.7°C.",
+      "latency_seconds": 14.375,
+      "compute_latency_seconds": 14.375,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "multi_three_tools",
+      "category": "multi_tool",
+      "success": false,
+      "failure_reasons": [
+        "hit_max_steps",
+        "numeric_mismatch:expected=305989,found=[]"
+      ],
+      "steps_taken": 3,
+      "tool_calls": [
+        {
+          "tool_name": "get_weather",
+          "arguments": {
+            "city": "Bangalore"
+          },
+          "is_error": false,
+          "result_preview": "{\"city\": \"Bangalore\", \"temperature_c\": 27.7, \"condition\": \"mainly clear\", \"source\": \"open-meteo\"}"
+        },
+        {
+          "tool_name": "calculator",
+          "arguments": {
+            "expression": "67 * 4567"
+          },
+          "is_error": false,
+          "result_preview": "305989"
+        },
+        {
+          "tool_name": "web_search",
+          "arguments": {
+            "query": "latest iPhone model"
+          },
+          "is_error": false,
+          "result_preview": "{\"query\": \"latest iPhone model\", \"results\": [{\"title\": \"iPhone - Wikipedia\", \"url\": \"https://en.wikipedia.org/wiki/IPhone\", \"snippet\": \"## Models\\n\\nMain article: List of iPhone models\\n\\nThere are 52"
+        }
+      ],
+      "final_answer": "Max steps reached without a final answer.",
+      "latency_seconds": 29.421000000000276,
+      "compute_latency_seconds": 29.421000000000276,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": true
+    },
+    {
+      "task_id": "chain_weather_then_calc",
+      "category": "chained_reasoning",
+      "success": false,
+      "failure_reasons": [
+        "missing_required_tools:['calculator']"
+      ],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "get_weather",
+          "arguments": {
+            "city": "Mumbai"
+          },
+          "is_error": false,
+          "result_preview": "{\"city\": \"Mumbai\", \"temperature_c\": 27.7, \"condition\": \"mainly clear\", \"source\": \"open-meteo\"}"
+        }
+      ],
+      "final_answer": "The current temperature in Mumbai is 27.7°C. Converting this to Fahrenheit: \n\nC = 27.7\nF = C * 9/5 + 32\n   = 27.7 * 9/5 + 32\n   = 82°F\n\nSo, the temperature in Mumbai is 27.7°C or 82°F.",
+      "latency_seconds": 18.03100000000086,
+      "compute_latency_seconds": 18.03100000000086,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "time_sensitive_1",
+      "category": "time_sensitive",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "web_search",
+          "arguments": {
+            "query": "most recent IPL season winner"
+          },
+          "is_error": false,
+          "result_preview": "{\"query\": \"most recent IPL season winner\", \"results\": [{\"title\": \"Indian Premier League\", \"url\": \"https://en.wikipedia.org/wiki/Indian_Premier_League\", \"snippet\": \"won it twice. Sai Sudharsan of Gujar"
+        }
+      ],
+      "final_answer": "The most recent IPL season (2026) was won by the Royal Challengers Bangalore.",
+      "latency_seconds": 10.359999999998763,
+      "compute_latency_seconds": 10.359999999998763,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "no_tool_needed_1",
+      "category": "no_tool_expected",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 1,
+      "tool_calls": [],
+      "final_answer": "The chemical symbol for gold is Au.",
+      "latency_seconds": 1.6720000000004802,
+      "compute_latency_seconds": 1.6720000000004802,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "no_tool_needed_2",
+      "category": "no_tool_expected",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 1,
+      "tool_calls": [],
+      "final_answer": "In the context of AI, 'agentic' refers to systems that autonomously pursue goals and make decisions without human intervention.",
+      "latency_seconds": 3.2960000000002765,
+      "compute_latency_seconds": 3.2960000000002765,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "adversarial_negative_multiply",
+      "category": "adversarial_math",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "calculator",
+          "arguments": {
+            "expression": "-18 * 34"
+          },
+          "is_error": false,
+          "result_preview": "-612"
+        }
+      ],
+      "final_answer": "-18 * 34 = -612.",
+      "latency_seconds": 5.531000000000859,
+      "compute_latency_seconds": 5.531000000000859,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "adversarial_decimal_division",
+      "category": "adversarial_math",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "calculator",
+          "arguments": {
+            "expression": "17 / 8"
+          },
+          "is_error": false,
+          "result_preview": "2.125"
+        }
+      ],
+      "final_answer": "17 divided by 8 is 2.125.",
+      "latency_seconds": 5.32799999999952,
+      "compute_latency_seconds": 5.32799999999952,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "adversarial_percentage",
+      "category": "adversarial_math",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "calculator",
+          "arguments": {
+            "expression": "340 * 0.15"
+          },
+          "is_error": false,
+          "result_preview": "51.0"
+        }
+      ],
+      "final_answer": "15% of 340 is 51.",
+      "latency_seconds": 6.281000000000859,
+      "compute_latency_seconds": 6.281000000000859,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "adversarial_false_premise",
+      "category": "adversarial_reasoning",
+      "success": false,
+      "failure_reasons": [
+        "missing_expected_content_any:['fictional', \"doesn't exist\", 'does not exist', 'not a real country', 'not real', 'marvel']"
+      ],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "web_search",
+          "arguments": {
+            "query": "current GDP of Wakanda"
+          },
+          "is_error": false,
+          "result_preview": "{\"query\": \"current GDP of Wakanda\", \"results\": [{\"title\": \"In Terms of GDP, Just How Rich is the Nation of Wakanda? | Black Girl Nerds\", \"url\": \"https://blackgirlnerds.com/in-terms-of-gdp-just-how-ric"
+        }
+      ],
+      "final_answer": "Based on the information available, the GDP of Wakanda is not explicitly stated in current real-world economic data. However, it is estimated that Wakanda holds around 10,000 tons of Vibranium, valued at approximately $100 trillion, which significantly contributes to its economy. For context, other African nations have GDPs ranging from $19.93 billion (Botswana) to $23.36 billion (Gabon).",
+      "latency_seconds": 17.60900000000038,
+      "compute_latency_seconds": 17.60900000000038,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "adversarial_chained_search_calc",
+      "category": "adversarial_reasoning",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "web_search",
+          "arguments": {
+            "query": "year first iPhone was released"
+          },
+          "is_error": false,
+          "result_preview": "{\"query\": \"year first iPhone was released\", \"results\": [{\"title\": \"iPhone (1st generation) - Wikipedia\", \"url\": \"https://en.wikipedia.org/wiki/IPhone_(1st_generation)\", \"snippet\": \"The iPhone is a sma"
+        },
+        {
+          "tool_name": "calculator",
+          "arguments": {
+            "expression": "2026 - 2007"
+          },
+          "is_error": false,
+          "result_preview": "19"
+        }
+      ],
+      "final_answer": "The first iPhone was released in 2007. From 2026, that makes it 19 years ago.",
+      "latency_seconds": 12.82799999999952,
+      "compute_latency_seconds": 12.82799999999952,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "adversarial_division_by_zero",
+      "category": "adversarial_error_handling",
+      "success": false,
+      "failure_reasons": [
+        "missing_required_tools:['calculator']",
+        "expected_tool_error_but_none_occurred"
+      ],
+      "steps_taken": 1,
+      "tool_calls": [],
+      "final_answer": "Division by zero is undefined in mathematics. So 50 divided by 0 does not have an answer.",
+      "latency_seconds": 3.5,
+      "compute_latency_seconds": 3.5,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    },
+    {
+      "task_id": "adversarial_ambiguous_city",
+      "category": "adversarial_ambiguity",
+      "success": true,
+      "failure_reasons": [],
+      "steps_taken": 2,
+      "tool_calls": [
+        {
+          "tool_name": "get_weather",
+          "arguments": {
+            "city": "Springfield"
+          },
+          "is_error": false,
+          "result_preview": "{\"city\": \"Springfield\", \"temperature_c\": 24.2, \"condition\": \"clear sky\", \"source\": \"open-meteo\"}"
+        }
+      ],
+      "final_answer": "The weather in Springfield is clear sky at 24.2°C.",
+      "latency_seconds": 10.25,
+      "compute_latency_seconds": 10.25,
+      "retry_wait_seconds": 0.0,
+      "hit_max_steps": false
+    }
+  ]
+}
